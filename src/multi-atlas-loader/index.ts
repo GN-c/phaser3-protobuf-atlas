@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import { Atlas } from "../../protobuf";
+import { Atlas } from "../protobuf";
 
 /**
  * Extend Namespace to support TS

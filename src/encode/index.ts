@@ -31,7 +31,10 @@ export function Encode(atlasJSON: IAtlas | any) {
 /**
  * Read JSON File, convert and write to output path
  */
-export function EncodeFile(atlasJSONPath: string, outputPath: string) {
+export function EncodeFile(
+  atlasJSONPath: string,
+  outputPath: string = atlasJSONPath
+) {
   fs.writeFileSync(
     outputPath,
     Encode(fs.readFileSync(atlasJSONPath, { encoding: "utf-8" }))
