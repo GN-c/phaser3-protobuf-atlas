@@ -1,28 +1,46 @@
 {
   "name": "phaser3-protobuf-atlas",
-  "version": "1.1.0",
+  "version": "1.2.5",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "build": "npm run generate-proto & tsc",
+    "build": "npm run generate-proto & tsup",
     "generate-proto": "pbjs src/protobuf/atlas.proto -l -t static-module --no-create --no-encode --no-verify --no-convert --no-delimited --no-service -w src/protobuf/wrapper --es6 -o src/protobuf/index.js",
     "postgenerate-proto": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
   },
+  "tsup": {
+    "splitting": true,
+    "clean": true,
+    "dts": true,
+    "sourcemap": true,
+    "treeshake": true,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "minify": false,
+    "bundle": true,
+    "skipNodeModulesBundle": true,
+    "target": "es6",
+    "outDir": "dist",
+    "entry": {
+      "encode": "src/encode/index.ts",
+      "multi-atlas-loader": "src/multi-atlas-loader/index.ts",
+      "atlas-loader": "src/atlas-loader/index.ts"
+    }
+  },
   "exports": {
-    "./encode": {
-      "require": "./dist/encode/index.js",
-      "import": "./dist/encode/index.js",
-      "types": "./dist/encode/index.d.ts"
-    },
-    "./atlas-loader": {
-      "require": "./dist/atlas-loader/foo.js",
-      "import": "./dist/atlas-loader/foo.js",
-      "types": "./dist/atlas-loader/foo.d.ts"
-    },
-    "./multi-atlas-loader": {
-      "require": "./dist/multi-atlas-loader/bar.js",
-      "import": "./dist/multi-atlas-loader/bar.js",
-      "types": "./dist/multi-atlas-loader/bar.d.ts"
+    "./*": {
+      "import": "./dist/*.mjs",
+      "types": "./dist/*.d.ts",
+      "require": "./dist/*.js",
+      "default": "./dist/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*.d.ts"
+      ]
     }
   },
   "repository": {
@@ -38,13 +56,16 @@
   "dev-dependencies": {
     "protobufjs-cli": "^1.1.2"
   },
-  "peer-dependencies": {
-    "phaser": "^3.70.0"
-  },
+  "peer-dependencies": {},
   "dependencies": {
-    "phaser": "^3.70.0",
+    "phaser": ">=3.0.0",
     "protobufjs": "^7.2.5",
     "protobufjs-cli": "^1.1.2",
+    "tsup": "^8.0.1",
     "typescript": "^5.3.3"
-  }
+  },
+  "files": [
+    "dist/**",
+    "README.md"
+  ]
 }

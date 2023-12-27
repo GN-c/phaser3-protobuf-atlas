@@ -1,4 +1,4 @@
-import protobuf from "protobufjs";
+import protobuf from "protobufjs/";
 import * as fs from "fs";
 
 import { IAtlas } from "../protobuf";
