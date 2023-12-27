@@ -1,0 +1,31 @@
+{
+  "name": "phaser3-protobuf-atlas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-proto": "pbjs src/protobuf/atlas.proto -l -t static-module --no-create --no-encode --no-verify --no-convert --no-delimited --no-service -w src/protobuf/wrapper --es6 -o src/protobuf/index.js",
+    "postgenerate-proto": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GN-c/phaser3-protobuf-atlas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GN-c/phaser3-protobuf-atlas/issues"
+  },
+  "homepage": "https://github.com/GN-c/phaser3-protobuf-atlas#readme",
+  "dev-dependencies": {},
+  "peer-dependencies": {
+    "phaser": "^3.70.0",
+    "protobufjs": "^7.2.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "phaser": "^3.70.0",
+    "protobufjs-cli": "^1.1.2"
+  }
+}

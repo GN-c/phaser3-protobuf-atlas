@@ -1,0 +1,25 @@
+/**
+ * Import only essentials from protobuf
+ */
+//@ts-ignore
+import Reader from "protobufjs/src/reader.js";
+//@ts-ignore
+import BufferReader from "protobufjs/src/reader_buffer.js";
+//@ts-ignore
+import util from "protobufjs/src/util/minimal.js";
+
+util._configure();
+Reader._configure(BufferReader);
+
+/**
+ * super minimal protobuf
+ */
+const $protobuf = {
+  build: "minimal",
+  Reader,
+  BufferReader,
+  util,
+  roots: {},
+};
+
+$OUTPUT;

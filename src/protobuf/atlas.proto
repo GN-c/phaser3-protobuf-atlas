@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+message Atlas {
+    repeated Texture textures = 1;
+}
+
+message Texture {
+    required string image = 1;
+    optional string normalMap = 2;
+    repeated Frame frames = 3;
+}
+
+message Frame {
+    string filename = 1;
+    bool trimmed = 2;
+    bool rotated = 3;
+    Size sourceSize = 4;
+    Rect spriteSourceSize = 5;
+    Rect frame = 6;
+    optional Anchor anchor = 7;
+}
+
+message Size {
+    uint32 w = 1;
+    uint32 h = 2;
+}
+
+message Rect {
+    uint32 x = 1;
+    uint32 y = 2;
+    uint32 w = 3;
+    uint32 h = 4;
+}
+
+message Anchor {
+    double x = 1;
+    double y = 2;
+}
