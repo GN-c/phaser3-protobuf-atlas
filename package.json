@@ -1,47 +1,19 @@
 {
   "name": "phaser3-protobuf-atlas",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "scripts": {
-    "build": "npm run generate-proto & tsup",
+    "build": "npm run generate-proto & preconstruct build",
     "generate-proto": "pbjs src/protobuf/atlas.proto -l -t static-module --no-create --no-encode --no-verify --no-convert --no-delimited --no-service -w src/protobuf/wrapper --es6 -o src/protobuf/index.js",
     "postgenerate-proto": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
   },
-  "tsup": {
-    "splitting": true,
-    "clean": true,
-    "dts": true,
-    "sourcemap": true,
-    "treeshake": true,
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "minify": false,
-    "bundle": true,
-    "skipNodeModulesBundle": true,
-    "target": "es6",
-    "outDir": "dist",
-    "entry": {
-      "encode": "src/encode/index.ts",
-      "multi-atlas-loader": "src/multi-atlas-loader/index.ts",
-      "atlas-loader": "src/atlas-loader/index.ts"
-    }
-  },
-  "exports": {
-    "./*": {
-      "import": "./dist/*.mjs",
-      "types": "./dist/*.d.ts",
-      "require": "./dist/*.js",
-      "default": "./dist/*.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "dist/*.d.ts"
-      ]
-    }
+  "preconstruct": {
+    "entrypoints": [
+      "atlas-loader/index.ts",
+      "multi-atlas-loader/index.ts",
+      "encode/index.ts",
+      "protobuf/index.js"
+    ]
   },
   "repository": {
     "type": "git",
@@ -53,19 +25,25 @@
     "url": "https://github.com/GN-c/phaser3-protobuf-atlas/issues"
   },
   "homepage": "https://github.com/GN-c/phaser3-protobuf-atlas#readme",
-  "dev-dependencies": {
-    "protobufjs-cli": "^1.1.2"
-  },
-  "peer-dependencies": {},
-  "dependencies": {
-    "phaser": ">=3.0.0",
-    "protobufjs": "^7.2.5",
+  "devDependencies": {
+    "@babel/preset-typescript": "^7.23.3",
+    "@preconstruct/cli": "^2.8.2",
     "protobufjs-cli": "^1.1.2",
-    "tsup": "^8.0.1",
     "typescript": "^5.3.3"
   },
+  "dependencies": {
+    "phaser": "^3.70.0",
+    "protobufjs": "^7.2.5"
+  },
   "files": [
-    "dist/**",
+    "dist",
+    "atlas-loader",
+    "multi-atlas-loader",
+    "protobuf",
+    "encode",
     "README.md"
-  ]
+  ],
+  "peerDependencies": {
+    "phaser": "^3.70.0"
+  }
 }
