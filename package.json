@@ -1,35 +1,21 @@
 {
   "name": "phaser3-protobuf-atlas",
-  "version": "1.3.2",
-  "description": "",
+  "version": "1.3.6",
+  "author": "Giorgi Nadiradze",
+  "license": "ISC",
   "scripts": {
-    "build": "npm run generate-proto & npm run generate-proto-dts & preconstruct build & npm run build-bin & npm run copy-proto",
-    "build-bin": "tsc bin/encode.ts --outDir ./dist --esModuleInterop --module commonjs --skipLibCheck",
-    "copy-proto": "copyfiles src/protobuf/atlas.proto ./dist",
+    "build": "tsup",
     "generate-proto": "pbjs src/protobuf/atlas.proto -l -t static-module --no-create --no-encode --no-verify --no-convert --no-delimited --no-service -w src/protobuf/wrapper --es6 -o src/protobuf/index.js",
     "generate-proto-dts": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
   },
-  "preconstruct": {
-    "entrypoints": [
-      "*/index.{js,ts}"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GN-c/phaser3-protobuf-atlas.git"
-  },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/GN-c/phaser3-protobuf-atlas/issues"
   },
   "homepage": "https://github.com/GN-c/phaser3-protobuf-atlas#readme",
   "devDependencies": {
-    "@babel/preset-typescript": "^7.23.3",
-    "@preconstruct/cli": "^2.8.2",
-    "copyfiles": "^2.4.1",
     "protobufjs-cli": "^1.1.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "tsup": "^8.0.1"
   },
   "dependencies": {
     "phaser": "^3.70.0",

@@ -1,3 +1,4 @@
 {
-  "main": "dist/phaser3-protobuf-atlas-encode.cjs.js"
+  "main": "../dist/encode/index.js",
+  "types": "../dist/encode/index.d.ts"
 }

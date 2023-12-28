@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import { EncodeFile } from "../src/encode";
+import { EncodeFile } from "../encode";
 
 const [_, __, atlasJSONPath, outputFilePath] = process.argv;
 

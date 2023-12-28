@@ -1,15 +1,13 @@
 import protobuf from "protobufjs";
 import * as fs from "fs";
-import * as path from "path";
-
+//@ts-ignore
+import proto from "../protobuf/atlas.proto";
 import { IAtlas } from "../protobuf";
 
 /**
  * Load .proto
  */
-const AtlasMessage = protobuf
-  .loadSync(path.resolve(__dirname, "./atlas.proto"))
-  .lookupType("Atlas");
+const AtlasMessage = protobuf.parse(proto).root.lookupType("Atlas");
 
 /**
  * Encode JSON object

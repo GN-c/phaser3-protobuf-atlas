@@ -1,3 +1,4 @@
 {
-  "main": "dist/phaser3-protobuf-atlas-atlas-loader.cjs.js"
+  "main": "../dist/atlas-loader/index.js",
+  "types": "../dist/atlas-loader/index.d.ts"
 }
