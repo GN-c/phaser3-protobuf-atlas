@@ -1,8 +1,5 @@
 // DO NOT EDIT! This is a generated file. Edit the JSDoc in src/*.js instead and run 'npm run build:types'.
 
-/** super minimal protobuf */
-export const $protobuf: any;
-
 /** Properties of an Atlas. */
 export interface IAtlas {
 

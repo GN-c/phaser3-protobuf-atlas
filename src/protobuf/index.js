@@ -11,9 +11,7 @@ import util from "protobufjs/src/util/minimal.js";
 util._configure();
 Reader._configure(BufferReader);
 
-/**
- * super minimal protobuf
- */
+// Super minimal protobuf
 const $protobuf = {
   build: "minimal",
   Reader,

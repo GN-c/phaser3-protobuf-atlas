@@ -1,5 +1,6 @@
-import protobuf from "protobufjs/";
+import protobuf from "protobufjs";
 import * as fs from "fs";
+import * as path from "path";
 
 import { IAtlas } from "../protobuf";
 
@@ -7,7 +8,7 @@ import { IAtlas } from "../protobuf";
  * Load .proto
  */
 const AtlasMessage = protobuf
-  .loadSync(require.resolve("src/protobuf/atlas.proto"))
+  .loadSync(path.resolve(__dirname, "./atlas.proto"))
   .lookupType("Atlas");
 
 /**

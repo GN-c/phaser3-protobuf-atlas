@@ -1,18 +1,17 @@
 {
   "name": "phaser3-protobuf-atlas",
-  "version": "1.2.6",
+  "version": "1.3.2",
   "description": "",
   "scripts": {
-    "build": "npm run generate-proto & preconstruct build",
+    "build": "npm run generate-proto & npm run generate-proto-dts & preconstruct build & npm run build-bin & npm run copy-proto",
+    "build-bin": "tsc bin/encode.ts --outDir ./dist --esModuleInterop --module commonjs --skipLibCheck",
+    "copy-proto": "copyfiles src/protobuf/atlas.proto ./dist",
     "generate-proto": "pbjs src/protobuf/atlas.proto -l -t static-module --no-create --no-encode --no-verify --no-convert --no-delimited --no-service -w src/protobuf/wrapper --es6 -o src/protobuf/index.js",
-    "postgenerate-proto": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
+    "generate-proto-dts": "pbts src/protobuf/index.js -m -o src/protobuf/index.d.ts"
   },
   "preconstruct": {
     "entrypoints": [
-      "atlas-loader/index.ts",
-      "multi-atlas-loader/index.ts",
-      "encode/index.ts",
-      "protobuf/index.js"
+      "*/index.{js,ts}"
     ]
   },
   "repository": {
@@ -28,6 +27,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
     "@preconstruct/cli": "^2.8.2",
+    "copyfiles": "^2.4.1",
     "protobufjs-cli": "^1.1.2",
     "typescript": "^5.3.3"
   },
@@ -45,5 +45,8 @@
   ],
   "peerDependencies": {
     "phaser": "^3.70.0"
+  },
+  "bin": {
+    "encode-protobuf-atlas": "./dist/bin/encode.js"
   }
 }
