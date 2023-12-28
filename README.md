@@ -1,8 +1,8 @@
-# Phaser 3 Protobuf Atlas Imported
+# Phaser 3 Protobuf Atlas
 
 Encode and Load atlas JSON in more efficient binary format using Protobuf
 
-## Features
+## Pros
 
 - Reduced file size -> improved load speed
 - Efficient encoding -> faster parse speed
@@ -79,7 +79,7 @@ console.log(atlasJSON);
 
 encode `atlas.json` into binary file using cli
 
-```cli
+```bash
 encode-protobuf-atlas path/atlas.json path/output
 ```
 
