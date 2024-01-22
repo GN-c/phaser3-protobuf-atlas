@@ -36,6 +36,6 @@ export function EncodeFile(
 ) {
   fs.writeFileSync(
     outputPath,
-    Encode(fs.readFileSync(atlasJSONPath, { encoding: "utf-8" }))
+    Encode(JSON.parse(fs.readFileSync(atlasJSONPath, { encoding: "utf-8" })))
   );
 }
