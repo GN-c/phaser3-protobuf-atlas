@@ -17,10 +17,6 @@
     "typescript": "^5.3.3",
     "tsup": "^8.0.1"
   },
-  "dependencies": {
-    "phaser": "^3.70.0",
-    "protobufjs": "^7.2.5"
-  },
   "files": [
     "dist",
     "atlas-loader",
@@ -30,7 +26,8 @@
     "README.md"
   ],
   "peerDependencies": {
-    "phaser": "^3.70.0"
+    "phaser": "^3.70.0",
+    "protobufjs": "^7.2.5"
   },
   "bin": {
     "encode-protobuf-atlas": "./dist/bin/encode.js"
