@@ -1,6 +1,6 @@
 {
   "name": "phaser3-protobuf-atlas",
-  "version": "1.5.0",
+  "version": "1.7.0",
   "author": "Giorgi Nadiradze",
   "license": "ISC",
   "scripts": {
@@ -26,7 +26,7 @@
     "README.md"
   ],
   "peerDependencies": {
-    "phaser": "^3.70.0",
+    "phaser": ">= 3.7.0",
     "protobufjs": "^7.2.5"
   },
   "bin": {
