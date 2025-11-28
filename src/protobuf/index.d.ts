@@ -41,7 +41,7 @@ export class Atlas implements IAtlas {
 export interface ITexture {
 
     /** Texture image */
-    image: string;
+    image?: (string|null);
 
     /** Texture normalMap */
     normalMap?: (string|null);
@@ -63,13 +63,10 @@ export class Texture implements ITexture {
     public image: string;
 
     /** Texture normalMap. */
-    public normalMap?: (string|null);
+    public normalMap: string;
 
     /** Texture frames. */
     public frames: IFrame[];
-
-    /** Texture _normalMap. */
-    public _normalMap?: "normalMap";
 
     /**
      * Decodes a Texture message from the specified reader or buffer.

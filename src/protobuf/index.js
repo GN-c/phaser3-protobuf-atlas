@@ -115,7 +115,7 @@ export const Texture = $root.Texture = (() => {
      * Properties of a Texture.
      * @exports ITexture
      * @interface ITexture
-     * @property {string} image Texture image
+     * @property {string|null} [image] Texture image
      * @property {string|null} [normalMap] Texture normalMap
      * @property {Array.<IFrame>|null} [frames] Texture frames
      */
@@ -146,11 +146,11 @@ export const Texture = $root.Texture = (() => {
 
     /**
      * Texture normalMap.
-     * @member {string|null|undefined} normalMap
+     * @member {string} normalMap
      * @memberof Texture
      * @instance
      */
-    Texture.prototype.normalMap = null;
+    Texture.prototype.normalMap = "";
 
     /**
      * Texture frames.
@@ -159,20 +159,6 @@ export const Texture = $root.Texture = (() => {
      * @instance
      */
     Texture.prototype.frames = $util.emptyArray;
-
-    // OneOf field names bound to virtual getters and setters
-    let $oneOfFields;
-
-    /**
-     * Texture _normalMap.
-     * @member {"normalMap"|undefined} _normalMap
-     * @memberof Texture
-     * @instance
-     */
-    Object.defineProperty(Texture.prototype, "_normalMap", {
-        get: $util.oneOfGetter($oneOfFields = ["normalMap"]),
-        set: $util.oneOfSetter($oneOfFields)
-    });
 
     /**
      * Decodes a Texture message from the specified reader or buffer.
@@ -211,8 +197,6 @@ export const Texture = $root.Texture = (() => {
                 break;
             }
         }
-        if (!message.hasOwnProperty("image"))
-            throw $util.ProtocolError("missing required 'image'", { instance: message });
         return message;
     };
 

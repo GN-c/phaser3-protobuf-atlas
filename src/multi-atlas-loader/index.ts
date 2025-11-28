@@ -83,7 +83,7 @@ export class MultiAtlasProtobufFile extends Phaser.Loader.MultiFile {
           const image = new Phaser.Loader.FileTypes.ImageFile(
             this.loader,
             key,
-            textureURL,
+            textureURL!,
             textureXhrSettings
           );
 
