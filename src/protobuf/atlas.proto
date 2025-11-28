@@ -5,8 +5,8 @@ message Atlas {
 }
 
 message Texture {
-    required string image = 1;
-    optional string normalMap = 2;
+    string image = 1;
+    string normalMap = 2;
     repeated Frame frames = 3;
 }
 
